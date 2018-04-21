@@ -35,14 +35,8 @@ contract('ExperienceChain', (accounts) => {
     describe("Test 1", function(){
 
         it("add_skill test", function() {
-
-            emplyee_adreess = "33";
-            skill_id = 55;
-            hours = 24;
-
-
             contract.add_skill("33", 44, 8, {from: accounts[0]});
-            console.log("add employee adress = " + emplyee_adreess + " skill id = " + skill_id + " hours = " + 8);
+            console.log("add employee adress = 33" + " skill id = 44" +  " hours = " + 8);
             console.log("finish add_skill");
         })
 
