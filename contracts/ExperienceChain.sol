@@ -31,6 +31,7 @@ contract ExperienceChain {
 
 
     /****** CONTRACT FEATURES  *****/
+    
     function add_skill(address _employee, uint _skill_id, uint _hour) public  {
         var skillData = SkillData({
             mentor_address: msg.sender,
