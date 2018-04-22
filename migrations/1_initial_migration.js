@@ -7,5 +7,4 @@ module.exports = function(deployer) {
   }).then(function(){
  	console.log("complete!")
   })
-  
 };
