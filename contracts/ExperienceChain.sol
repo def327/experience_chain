@@ -15,22 +15,23 @@ contract ExperienceChain {
     mapping(address => mapping(uint => SkillData)) employees_data_map;
     mapping(address => bool) mentors_map;
 
+
+    /*** Test method***/
+    function test() public returns(uint _value) {
+        _value = 42;    
+    }
+
     /*** MENTORS security ****/
     modifier onlyMentor {
         require(mentors_map[msg.sender] == true);
         _;
     }
 
+    /****** CONTRACT FEATURES  *****/
+
     function add_mentor() onlyMentor {
         mentors_map[msg.sender] = true;
     }
-
-    function test() public returns(uint _value) {
-        _value = 42;    
-    }
-
-
-    /****** CONTRACT FEATURES  *****/
     
     function add_skill(address _employee, uint _skill_id, uint _hour) public  {
         var skillData = SkillData({

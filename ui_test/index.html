@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Hello World DApp</title>
+      <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+      <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
+      <!-- Enable web3js lib at to browser START -->
+      <script src="https://cdn.jsdelivr.net/gh/ethereum/web3.js/dist/web3.min.js"></script>
+      <script>
+         if (typeof web3 !== 'undefined') {
+             web3 = new Web3(web3.currentProvider);
+         } else {
+             // set the provider you want from Web3.providers
+             web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
+         
+             // Get all wallet public keys at local etherium node
+             var accounts = web3.eth.defaultAccount = web3.eth.accounts;
+             var account_5 = web3.eth.defaultAccount = web3.eth.accounts[4];
+
+            var contractDesc = [{"constant":false,"inputs":[],"name":"test","outputs":[{"name":"_value","type":"int8"}],"type":"function"}];
+            var account = account_5;
+            var contract = web3.eth.contract(account, contractDesc);
+            var rez = contract.test();
+            console.log(String(rez));
+
+             // ExperienceChain.deployed().then(inst => { ExperienceChainInstance = inst });
+
+             // ExperienceChain.test({from: account1});
+         
+             // Proceed contract method
+              // try {
+              //   /* Voting.deployed() returns an instance of the contract. Every call
+              //    * in Truffle returns a promise which is why we have used then()
+              //    * everywhere we have a transaction call
+              //    */
+              //   Voting.deployed().then(function (contractInstance) {
+              //     contractInstance.voteForCandidate(candidateName, {
+              //       gas: 140000,
+              //       from: web3.eth.accounts[0]
+              //     }).then(function () {
+              //       let div_id = candidates[candidateName];
+              //       return contractInstance.totalVotesFor.call(candidateName).then(function (v) {
+              //         $("#" + div_id).html(v.toString());
+              //         $("#msg").html("");
+              //       });
+              //     });
+              //   });
+              // } catch (err) {
+              //   console.log(err);
+              // }
+         
+         
+         
+         }
+      </script>
+      <!-- Enable web3js lib at to browser END -->
+   </head>
+   <body class="container">
+      <h1>A Simple Hello World Voting Application</h1>
+      <div id="address"></div>
+      <div class="table-responsive">
+         <table class="table table-bordered">
+            <thead>
+               <tr>
+                  <th>Candidate</th>
+                  <th>Votes</th>
+               </tr>
+            </thead>
+            <tbody>
+               <tr>
+                  <td>Rama</td>
+                  <td id="candidate-1"></td>
+               </tr>
+               <tr>
+                  <td>Nick</td>
+                  <td id="candidate-2"></td>
+               </tr>
+               <tr>
+                  <td>Jose</td>
+                  <td id="candidate-3"></td>
+               </tr>
+            </tbody>
+         </table>
+         <div id="msg"></div>
+      </div>
+      <input type="text" id="candidate" />
+      <a href="#" onclick="voteForCandidate()" class="btn btn-primary">Vote</a>
+   </body>
+   <script src="https://cdn.rawgit.com/ethereum/web3.js/develop/dist/web3.js"></script>
+   <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+   <!-- <script src="app.js"></script> -->
+</html>
