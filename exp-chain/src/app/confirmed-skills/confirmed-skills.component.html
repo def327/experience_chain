@@ -1,0 +1,16 @@
+<mat-toolbar>
+  <span style="text-align: center">Confirmed skills</span>
+</mat-toolbar>
+
+<div *ngIf="accounts">
+  <div *ngFor="let account of accounts; let i = index" [attr.data-index]="i">
+    <div style="margin-left:100px; margin-right: 100px">
+      <mat-card>
+        <div style="width: 50%; display: inline-block; text-align: left"> {{wallets[i]}} </div>
+        <div style="width: 30%; display: inline-block; text-align: center">
+            Git:{{account[0][0]['c'][0]}} hours: {{account[0][2]['c'][0]}} || Jira:{{account[1][0]['c'][0]}} hours: {{account[1][2]['c'][0]}}
+        </div>
+      </mat-card>
+    </div>
+  </div>
+</div>

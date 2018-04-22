@@ -1,0 +1,25 @@
+<mat-toolbar>
+  <span>Add completed work</span>
+  <div style="width:100%; text-align:right">
+    <span>Github: xTaz1, </span>
+    <span>Jira: xTazy</span>
+  </div>
+</mat-toolbar>
+
+<div style="display: flex; align-items: center; margin-top: 50px; align-items: center;">
+  <mat-card style="width: 50%; margin-left: 25%; display: inline-block">
+    <mat-select placeholder="Account" style="width: 20%" [(ngModel)]="selectedAccount">
+      <mat-option *ngFor="let account of accounts" [value]="account">
+        {{ account }}
+      </mat-option>
+    </mat-select>
+    <mat-form-field style="width: 70%; display: inline-block">
+      <input matInput placeholder="Link to source" [(ngModel)]="data.link" name="link" #source>
+    </mat-form-field>
+    <button mat-button style="width: 50%; margin-left: 25%" (click)="addCompletedWork(data.link)">
+      <img src="assets/jira.png" *ngIf="data.link.includes('jira')" style="height: 30px">
+      <img src="assets/github.png" *ngIf="data.link.includes('github')" style="height: 30px">
+      <span style="font-size: 20px">Add</span>
+    </button>
+  </mat-card>
+</div>

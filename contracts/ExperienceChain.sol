@@ -29,13 +29,11 @@ contract ExperienceChain {
         _value = 42;    
     }
 
-
-    /****** CONTRACT FEATURES  *****/
-    
-    function add_skill(address _employee, uint _skill_id, uint _hour) public  {
+    function add_skill(address _employee, uint _skill_id, uint _hour) onlyMentor {
+        var oldHours = employees_data_map[_employee][_skill_id].hour;
         var skillData = SkillData({
             mentor_address: msg.sender,
-            hour: _hour
+            hour: _hour + oldHours
         });
         employees_data_map[_employee][_skill_id] = skillData;
     }
